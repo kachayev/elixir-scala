@@ -34,6 +34,20 @@ end
 
 Meaning of each line is the same as in Scala code. `for` macro will be evaluated to Elixir's `Stream` during compilation.
 
+Once again with commnents:
+
+```elixir
+import Scala
+require Facebook
+
+f_names = for do
+    f <- Facebook.friends :me	# loop over my friends, put each user to "f" variable
+    fof <- Facebook.friends f 	# loop over friends of "f", put each one to "fof" variable
+    if fof.age > 21 	    	# if "fof.age > 21" move on otherwise skip to next "fof"
+    yield {f.name, fof.name} 	# push to output stream tuple
+end
+```
+
 If you are falimiar with `Python` syntax, you can express the same block in `Python` as:
 
 ```python
@@ -46,7 +60,7 @@ def f_names():
                 yield f.name, fof.name
 ```
 
-## More examples:
+## More examples
 
 Simplest loop
 
