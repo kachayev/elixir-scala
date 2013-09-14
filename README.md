@@ -16,7 +16,7 @@ f_names = for {
 } yield (f.name, fof.name)
 ```
 
-Each line in `for {}` block is either `flatMap` description (`<var> <- <expr>`) or `filter` operaion (`if <expr>`). `yield` outside the block describes what do you want to get. `f_names` will be evaluated to Scala's `Stream`. Good explanation about Scala `for-yield` syntax you can find on [StackOverflow](http://stackoverflow.com/questions/1052476/what-is-scalas-yield).
+Each line in `for {}` block is either `flatMap` description (`<var> <- <expr>`) or `filter` operation (`if <expr>`). `yield` outside the block describes what do you want to get. `f_names` will be evaluated to Scala's `Stream`. Good explanation about Scala `for-yield` syntax you can find on [StackOverflow](http://stackoverflow.com/questions/1052476/what-is-scalas-yield).
 
 Now you can do the same thing in `Elixir`:
 
@@ -26,7 +26,7 @@ require Facebook
 
 f_names = for do
     f <- Facebook.friends :me
-    fof <- Facebook.friend f
+    fof <- Facebook.friends f
     if fof.age > 21
     yield {f.name, fof.name}
 end
