@@ -145,6 +145,25 @@ iex(2)> Enum.to_list s
 [1, 2, 4]
 ```
 
+Pythagorean triples search
+
+```elixir
+iex(1)> import Scala
+nil
+iex(2)> limit = 19
+19
+iex(3)> s = for do
+...(3)>   x  <- :lists.seq(1, limit)
+...(3)>   y  <- :lists.seq(x, limit)
+...(3)>   z  <- :lists.seq(y, limit)
+...(3)>   if (x*x) + (y*y) == (z*z)
+...(3)>   yield {x, y, z}
+...(3)> end
+Stream.Lazy[...]
+iex(4)> Enum.to_list s
+[{3, 4, 5}, {5, 12, 13}, {6, 8, 10}, {8, 15, 17}, {9, 12, 15}]
+```
+
 **Note**, you can find more examples in unit tests.
 
 ## Step by step
